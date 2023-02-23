@@ -1,12 +1,12 @@
 import express from 'express';
-import { getTweetsFromDb, getRefFromDb } from '../controllers/Twitter.js'
+import { getTweetsFromDb, getRefFromDb, getUser } from '../controllers/Twitter.js'
 
 
 const router = express.Router();
 
 
 router.get('/tweets', getTweetsFromDb);
-
+router.get('/user', getUser);
 router.get('/ref', getRefFromDb);
 // router.post('/', );
  
