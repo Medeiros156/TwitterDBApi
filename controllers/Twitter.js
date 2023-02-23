@@ -242,7 +242,7 @@ async function searchTweetsFromUser(id, dbCollection) {
 
 async function searchUserInfo(username) {
   const res = await fetch(
-    `https://api.twitter.com/2/users/by/username/${username}`,
+    `https://api.twitter.com/2/users/by/username/${username}?user.fields=created_at,description,entities,id,location,name,pinned_tweet_id,profile_image_url,protected,url,username,verified,withheld&expansions=pinned_tweet_id&tweet.fields=attachments,author_id,conversation_id,created_at,entities,geo,id,in_reply_to_user_id,lang,possibly_sensitive,referenced_tweets,source,text,withheld`,
     {
       headers: {
         authorization: BearerAuth,
