@@ -1,4 +1,4 @@
-import { main } from "../controllers/Twitter";
+import { main } from "../TwitterBotDb.js";
 
 export default function handler(req, res) {
     main()

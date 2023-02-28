@@ -5,7 +5,7 @@ import twitter from "./routes/Twitter.js";
 import pingRoutes from "./routes/ping.js";
 import jwt from "jsonwebtoken";
 import cors from "cors"
-import { main } from "./controllers/Twitter.js"
+import { main } from "./TwitterBotDb.js"
 import { ping } from "./controllers/ping.js";
 dotenv.config();
 const app = express();
@@ -32,8 +32,7 @@ app.post("/login", cors(), (req, res) => {
     res.status(401).json({ error: "Invalid Key" });
   }
 });
-app.use(
-  "/twitter",
+app.use("/twitter",
   cors(),
   (req, res, next) => {
     const authHeader = req.headers.authorization;
@@ -65,8 +64,8 @@ app.all("*", (req, res) =>res.send("You've tried reaching a route that doesn't e
 app.listen(PORT, () =>console.log(`Server running on port: http://localhost:${PORT}`));
 
 
+main();
 setInterval(() => {
-  main();
 }, /* 10000 */ 300000);
 
 setInterval(() => {
